@@ -1,0 +1,128 @@
+/* Estilo base (desktop) */
+body {
+    background-color: #0f0f0f;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+  
+.container {
+    text-align: center;
+}
+  
+.consumed {
+    color: #0091ff;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+  
+.input-area {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+input[type="number"] {
+    padding: 10px 15px;
+    border: 1px solid #555;
+    border-radius: 10px 10px 10px 10px;
+    outline: none;
+    background-color: #1a1a1a;
+    color: white;
+    width: 200px;
+    font-size: 16px;
+}
+  
+button {
+    padding: 10px 15px;
+    margin-left: 3px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+  
+.countdown {
+    margin-top: 10px;
+    font-size: 14px;
+}
+  
+.logo {
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+  
+.logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+  
+/* 🔽 MEDIA QUERY PARA TELAS MENORES QUE 768px (tablets e celulares) */
+@media (max-width: 768px) {
+    .consumed {
+      font-size: 20px;
+    }
+  
+    input[type="number"] {
+      width: 165px;
+      font-size: 15px;
+    }
+  
+    button {
+      font-size: 18px;
+      padding: 10px;
+    }
+  
+    .countdown {
+      font-size: 15px;
+    }
+  
+    .logo img {
+      width: 90px;
+      height: 90px;
+    }
+}
+  
+/* 🔽 MEDIA QUERY PARA TELAS MENORES QUE 480px (celulares pequenos) */
+@media (max-width: 480px) {
+    .input-area {
+      flex-direction: column;
+    }
+  
+    input[type="number"],
+    button {
+      width: 100%;
+      border-radius: 10px;
+      margin: 5px 0;
+    }
+  
+    .container {
+      padding: 10px;
+    }
+  
+    .logo {
+      position: static;
+      margin-top: 30px;
+    }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="H20 logo.png">
+  <link rel="stylesheet" href="style.css">
+  <title>H2OTracker</title>
+</head>
+<body>
+  <div class="container">
+    <p>Quanta água você já bebeu hoje?</p>
+    <div class="consumed" id="waterAmount">0ml</div>
+
+    <div class="input-area">
+      <input type="number" id="inputMl" placeholder="Digite a quantidade em ml" min="0" >
+      <button onclick="addWater()">+</button>
+    </div>
+
+    <div class="countdown">
+      faltam <strong id="countdown">--:--:--</strong> para acabar o dia.
+    </div>
+  </div>
+
+  <div class="logo">
+    <img src="H20 Tracker.png" alt="H2OTracker Logo">
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
