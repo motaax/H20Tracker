@@ -9,13 +9,15 @@
 </head>
 <body>
   <div class="container">
-    <p>Quanta água você já bebeu hoje?</p>
+    <h2>Quanta água você já bebeu hoje?</h2>
     <div class="consumed" id="waterAmount">0ml</div>
 
     <div class="input-area">
       <input type="number" id="inputMl" placeholder="Digite a quantidade em ml" min="0" >
       <button onclick="addWater()">+</button>
     </div>
+
+    <p>Total ontem: <span id="yesterdayAmount">0ml</span></p>
 
     <div class="countdown">
       faltam <strong id="countdown">--:--:--</strong> para acabar o dia.

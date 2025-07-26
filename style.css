@@ -17,10 +17,17 @@ body {
 }
   
 .consumed {
-    color: #0091ff;
-    font-size: 24px;
-    font-weight: bold;
-    margin: 10px 0;
+  color: #0091ff;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+#yesterdayAmount {
+  color: #0091ff;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -59,8 +66,8 @@ button {
 }
   
 .countdown {
-    margin-top: 10px;
-    font-size: 14px;
+    margin-top: 40px;
+    font-size: 15px;
 }
   
 .logo {
