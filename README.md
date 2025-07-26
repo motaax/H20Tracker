@@ -1,4 +1,4 @@
 # H20Tracker
- Gestão de água consumida durante o dia.
+ Gestor de água rápido e minimalista.
 
-https://motaax.github.io/H20Tracker/
+ [Acesse aqui](https://motaax.github.io/H20Tracker/)
