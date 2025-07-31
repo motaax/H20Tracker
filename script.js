@@ -27,7 +27,8 @@ function addWater() {
         localStorage.setItem("totalMl", totalMl);
         localStorage.setItem("savedDate", today);
         input.value = "";
-        }
+    }
+    alert(`${value} ml foram adicionados!`)
 }
 
 document.getElementById("inputMl").addEventListener("keydown", function(event) {
