@@ -6,19 +6,48 @@
   box-sizing: border-box;
 }
 
-/* Estilo base (desktop) */
-body {
-    background-color: #080808;
-    color: #fff;
-    font-family: "Roboto", sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    padding: 20px;
+:root {
+  --bg-color: #f8f6f6;
+  --text-color: #000000;
+  --button-bg: #f3f0f0;
+  --button-text: #000000;
 }
-  
+
+body.dark {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --button-bg: #181717;
+  --button-text: #ffffff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#themeToggle {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 2px solid #0091ff;
+  padding: 0.5rem 1rem;
+  border-radius: 10px 10px 10px 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  transition: background-color 0.3s, color 0.3s;
+}
+
 .container {
     text-align: center;
 }
@@ -39,104 +68,112 @@ body {
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
   
 .input-area {
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
   
 input[type="number"] {
-    padding: 10px 15px;
-    border: 1px solid #0091ff;
-    border-radius: 10px 10px 10px 10px;
-    outline: none;
-    background-color: #1a1a1a;
-    color: white;
-    width: 200px;
-    font-size: 16px;
+  padding: 10px 15px;
+  border: 2px solid #0091ff;
+  border-radius: 10px 10px 10px 10px;
+  outline: none;
+  background-color: #1a1a1a;
+  color: white;
+  width: 200px;
+  font-size: 16px;
 }
   
 button {
-    padding: 10px 15px;
-    margin-left: 3px;
-    background-color: white;
-    color: black;
-    border: none;
-    border-radius: 10px 10px 10px 10px;
-    font-size: 20px;
-    cursor: pointer;
+  padding: 10px 15px;
+  margin-left: 3px;
+  background-color: white;
+  color: black;
+  border: 2px solid #0091ff;
+  border-radius: 10px 10px 10px 10px;
+  font-size: 20px;
+  cursor: pointer;
 }
   
 .countdown {
-    margin-top: 40px;
-    font-size: 15px;
+  margin-top: 40px;
+  font-size: 15px;
 }
   
 .logo {
-    position: absolute;
-    bottom: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  position: absolute;
+  bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
   
 .logo img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
   
 /* 🔽 MEDIA QUERY PARA TELAS MENORES QUE 768px (tablets e celulares) */
 @media (max-width: 768px) {
-    .consumed {
-      font-size: 20px;
-    }
+  .consumed {
+    font-size: 20px;
+  }
   
-    input[type="number"] {
-      width: 165px;
-      font-size: 15px;
-    }
+  input[type="number"] {
+    width: 165px;
+    font-size: 15px;
+  }
   
-    button {
-      font-size: 18px;
-      padding: 10px;
-    }
+  button {
+    font-size: 18px;
+    padding: 10px;
+  }
   
-    .countdown {
-      font-size: 15px;
-    }
+  .countdown {
+    font-size: 15px;
+  }
   
-    .logo img {
-      width: 90px;
-      height: 90px;
-    }
+  .logo img {
+    width: 90px;
+    height: 90px;
+  }
+  button#themeToggle {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
 }
   
 /* 🔽 MEDIA QUERY PARA TELAS MENORES QUE 480px (celulares pequenos) */
 @media (max-width: 480px) {
-    .input-area {
-      flex-direction: column;
-    }
+  .input-area {
+    flex-direction: column;
+  }
   
-    input[type="number"],
-    button {
-      width: 100%;
-      border-radius: 10px;
-      margin: 5px 0;
-    }
+  input[type="number"], button {
+    width: 100%;
+    border-radius: 10px;
+    margin: 5px 0;
+  }
   
-    .container {
-      padding: 10px;
-    }
+  .container {
+    padding: 10px;
+  }
   
-    .logo {
-      position: static;
-      margin-top: 30px;
-    }
+  .logo {
+    position: static;
+    margin-top: 30px;
+  }
+
+  button#themeToggle {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
 }

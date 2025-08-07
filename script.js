@@ -18,6 +18,7 @@ if (savedDate !== today) {
 document.getElementById("waterAmount").textContent = `${totalMl}ml`;
 document.getElementById("yesterdayAmount").textContent = `${localStorage.getItem("yesterdayMl") || "0"}ml`;
 
+//Adiciona uma quantidade de água
 function addWater() {
     const input = document.getElementById("inputMl");
     const value = parseInt(input.value);
@@ -37,6 +38,7 @@ document.getElementById("inputMl").addEventListener("keydown", function(event) {
         }
     });
 
+//Verifica se o dia acabou
 function updateCountdown() {
     const now = new Date();
     const midnight = new Date();
@@ -52,3 +54,22 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
+// Checar se o tema foi salvo anteriormente
+const themeToggle = document.getElementById("themeToggle");
+
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    themeToggle.textContent = "☀️";
+}
+
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    const isDark = document.body.classList.contains("dark");
+
+    // Atualiza o texto/ícone do botão
+    themeToggle.textContent = isDark ? "☀️" : "🌙";
+
+    // Salva preferência
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+});
