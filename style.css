@@ -127,14 +127,10 @@ button {
     font-size: 20px;
   }
   
-  input[type="number"] {
-    width: 165px;
-    font-size: 15px;
-  }
-  
-  button {
-    font-size: 18px;
-    padding: 10px;
+  input[type="number"], button {
+    width: 50%;
+    border-radius: 10px;
+    margin: 5px 0;
   }
   
   .countdown {
@@ -147,6 +143,7 @@ button {
   }
   button#themeToggle {
     font-size: 1rem;
+    width: 15%;
     padding: 0.4rem 0.8rem;
   }
 }
