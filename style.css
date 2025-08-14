@@ -121,57 +121,55 @@ button {
   border-radius: 50%;
 }
   
-/* 🔽 MEDIA QUERY PARA TELAS MENORES QUE 768px (tablets e celulares) */
-@media (max-width: 768px) {
+/* Tablet */
+@media (max-width: 1024px) {
   .consumed {
-    font-size: 20px;
+    font-size: clamp(1rem, 3vw, 1.75rem);
   }
-  
+
   input[type="number"], button {
-    width: 50%;
-    border-radius: 10px;
-    margin: 5px 0;
-  }
-  
-  .countdown {
-    font-size: 15px;
-  }
-  
-  .logo img {
-    width: 90px;
-    height: 90px;
-  }
-  button#themeToggle {
-    font-size: 1rem;
-    width: 15%;
-    padding: 0.4rem 0.8rem;
+    width: 80%;
   }
 }
-  
-/* 🔽 MEDIA QUERY PARA TELAS MENORES QUE 480px (celulares pequenos) */
-@media (max-width: 480px) {
-  .input-area {
-    flex-direction: column;
+
+/* Celulares médios */
+@media (max-width: 768px) {
+  .consumed {
+    font-size: clamp(0.9rem, 4vw, 1.5rem);
   }
-  
+
   input[type="number"], button {
-    width: 50%;
-    border-radius: 10px;
-    margin: 5px 0;
+    width: 70%;
   }
-  
-  .container {
-    padding: 10px;
+
+  .countdown {
+    font-size: clamp(0.8rem, 3vw, 1.125rem);
   }
-  
-  .logo {
-    position: static;
-    margin-top: 250px;
+
+  .logo img {
+    width: clamp(60px, 15vw, 90px);
   }
 
   button#themeToggle {
-    font-size: 1rem;
-    width: 15%;
-    padding: 0.4rem 0.8rem;
+    width: 25%;
+  }
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+  .consumed {
+    font-size: clamp(0.8rem, 5vw, 1.25rem);
+  }
+
+  input[type="number"], button {
+    width: 90%;
+  }
+
+  .logo img {
+    width: clamp(50px, 20vw, 80px);
+  }
+
+  button#themeToggle {
+    width: 40%;
   }
 }
