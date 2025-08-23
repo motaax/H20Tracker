@@ -1,3 +1,38 @@
+// ======== LOGIN COM GOOGLE ==========
+    function handleCredentialResponse(response) {
+      const data = JSON.parse(atob(response.credential.split('.')[1]));
+      console.log("Usuário logado:", data);
+
+      // Salva no localStorage
+      localStorage.setItem("user", JSON.stringify(data));
+
+      // Mostra usuário
+      document.getElementById("userInfo").innerHTML =
+        `<img src="${data.picture}" style="width:40px;border-radius:50%"> 
+         Olá, ${data.name}`;
+
+      // Esconde login, mostra app
+      document.getElementById("loginArea").style.display = "none";
+      document.getElementById("app").style.display = "block";
+    }
+
+    function logout() {
+      localStorage.removeItem("user");
+      document.getElementById("loginArea").style.display = "block";
+      document.getElementById("app").style.display = "none";
+    }
+
+    // Auto-login se já tiver salvo
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      const data = JSON.parse(savedUser);
+      document.getElementById("userInfo").innerHTML =
+        `<img src="${data.picture}" style="width:40px;border-radius:50%"> 
+         Olá, ${data.name}`;
+      document.getElementById("loginArea").style.display = "none";
+      document.getElementById("app").style.display = "block";
+    }
+
 const today = new Date().toLocaleDateString();
 
 let savedDate = localStorage.getItem("savedDate");
