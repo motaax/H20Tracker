@@ -9,24 +9,9 @@
   <link rel="icon" href="H20 logo.png">
   <link rel="stylesheet" href="style.css">
   <title>H2OTracker</title>
-  <meta name="google-signin-client_id" content="1052272801262-r266p56k23fhkf7hq6dhvuqe7ibbqqmd.apps.googleusercontent.com">
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>  
-  <!-- Área de login -->
-  <div id="loginArea">
-    <div id="g_id_onload"
-         data-client_id="1052272801262-r266p56k23fhkf7hq6dhvuqe7ibbqqmd.apps.googleusercontent.com"
-         data-callback="handleCredentialResponse">
-    </div>
-    <div class="g_id_signin" data-type="standard"></div>
-  </div>
 
-  <!-- Área principal (esconde até logar) -->
-  <div id="app" style="display:none;">
-    <h4 id="userInfo"></h4>
-    <button onclick="logout()">Sair</button>
-  </div>
   <div class="container">
     <h2>Quanta água você já bebeu hoje?</h2>
     <div class="consumed" id="waterAmount">0ml</div>
@@ -49,6 +34,7 @@
   <div class="logo">
     <img src="H20 Tracker.png" alt="H2OTracker Logo">
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>

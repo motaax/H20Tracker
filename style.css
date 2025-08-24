@@ -48,32 +48,6 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-#app {
-  position: absolute;
-  top: 20px;
-  left: 5%;
-  transform: translateX(-50%);
-}
-
-#userInfo {
-  display: flex;              
-  align-items: center;       
-  gap: 10px;               
-}
-
-#userInfo img {
-  border-radius: 50%;         
-  width: 40px;                
-  height: 40px;
-}
-
-#app button {
-  margin: 0;
-  padding: 4px;
-  width: 50%;
-  margin-top: 8px; 
-}
-
 .container {
     text-align: center;
 }
@@ -182,33 +156,6 @@ button {
     width: 15%;
   }
 
-  #app {
-  position: absolute;
-  top: 20px;
-  left: 19%;
-  transform: translateX(-50%);
-  }
-
-  #userInfo {
-    display: flex;              
-    align-items: center;       
-    gap: 10px;               
-  }
-
-  #userInfo img {
-    border-radius: 50%;         
-    width: 40px;                
-    height: 40px;
-  }
-
-  #app button {
-    margin: 0;
-    padding: 4px;
-    width: 40%;
-    height: 20%;
-    margin-top: 8px; 
-  }
-
 }
 
 /* Celulares pequenos */
@@ -230,31 +177,5 @@ button {
   button#themeToggle {
     width: 20%;
   }
-
-  #app {
-  position: absolute;
-  top: 20px;
-  left: 25%;
-  transform: translateX(-50%);
-  }
-
-  #userInfo {
-    display: flex;              
-    align-items: center;       
-    gap: 10px;               
-  }
-
-  #userInfo img {
-    border-radius: 50%;         
-    width: 40px;                
-    height: 40px;
-  }
-
-  #app button {
-    margin: 0;
-    padding: 4px;
-    width: 35%;
-    height: 20%;
-    margin-top: 8px; 
-  }
+  
 }

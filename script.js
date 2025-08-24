@@ -1,110 +1,127 @@
-// ======== LOGIN COM GOOGLE ==========
-    function handleCredentialResponse(response) {
-      const data = JSON.parse(atob(response.credential.split('.')[1]));
-      console.log("Usuário logado:", data);
+const today = new Date();
+const dayOfWeek = today.getDay(); // 0 = domingo, 1 = segunda, ..., 6 = sábado
+const todayStr = today.toLocaleDateString();
 
-      // Salva no localStorage
-      localStorage.setItem("user", JSON.stringify(data));
-
-      // Mostra usuário
-      document.getElementById("userInfo").innerHTML =
-        `<img src="${data.picture}" style="width:40px;border-radius:50%"> 
-         Olá, ${data.name}`;
-
-      // Esconde login, mostra app
-      document.getElementById("loginArea").style.display = "none";
-      document.getElementById("app").style.display = "block";
-    }
-
-    function logout() {
-      localStorage.removeItem("user");
-      document.getElementById("loginArea").style.display = "block";
-      document.getElementById("app").style.display = "none";
-    }
-
-    // Auto-login se já tiver salvo
-    const savedUser = localStorage.getItem("user");
-    if (savedUser) {
-      const data = JSON.parse(savedUser);
-      document.getElementById("userInfo").innerHTML =
-        `<img src="${data.picture}" style="width:40px;border-radius:50%"> 
-         Olá, ${data.name}`;
-      document.getElementById("loginArea").style.display = "none";
-      document.getElementById("app").style.display = "block";
-    }
-
-const today = new Date().toLocaleDateString();
-
-let savedDate = localStorage.getItem("savedDate");
 let totalMl = 0;
 
-// Verifica se é um novo dia
-if (savedDate !== today) {
-    const yesterdayMl = localStorage.getItem("totalMl") || "0";
-    localStorage.setItem("yesterdayMl", yesterdayMl);
-    localStorage.setItem("totalMl", "0");
-    localStorage.setItem("savedDate", today);
-        totalMl = 0;
-    } else {
-        totalMl = parseInt(localStorage.getItem("totalMl")) || 0;
-    }
+// Dias da semana abreviados
+const weekDays = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 
-// Exibir valores
+// Recupera dados da semana do localStorage
+let weekData = JSON.parse(localStorage.getItem("weekData")) || [0,0,0,0,0,0,0];
+let savedDate = localStorage.getItem("savedDate");
+
+// Reset semanal automático no domingo
+if(dayOfWeek === 0 && savedDate && new Date(savedDate).getDay() !== 0){
+    weekData = [0,0,0,0,0,0,0];
+    localStorage.setItem("weekData", JSON.stringify(weekData));
+}
+
+// Verifica se é um novo dia
+if(savedDate !== todayStr){
+    // Salva o total do dia anterior
+    if(savedDate){
+        const yesterday = new Date(savedDate);
+        const yesterdayIndex = yesterday.getDay();
+        weekData[yesterdayIndex] = parseInt(localStorage.getItem("totalMl")) || 0;
+    }
+    // Zera o total do dia atual
+    totalMl = 0;
+    localStorage.setItem("totalMl","0");
+    localStorage.setItem("savedDate", todayStr);
+    localStorage.setItem("weekData", JSON.stringify(weekData));
+}else{
+    totalMl = parseInt(localStorage.getItem("totalMl")) || 0;
+}
+
+// Exibe consumo diário
 document.getElementById("waterAmount").textContent = `${totalMl}ml`;
 document.getElementById("yesterdayAmount").textContent = `${localStorage.getItem("yesterdayMl") || "0"}ml`;
 
-//Adiciona uma quantidade de água
+// Função para criar a visualização da semana em caixinhas
+function displayWeek() {
+    let weekContainer = document.getElementById("weekAmount");
+    if(!weekContainer){
+        weekContainer = document.createElement("div");
+        weekContainer.id = "weekAmount";
+        weekContainer.style.display = "flex";
+        weekContainer.style.justifyContent = "space-between";
+        weekContainer.style.marginTop = "10px";
+        document.querySelector(".container").appendChild(weekContainer);
+    }
+    weekContainer.innerHTML = "";
+
+    weekData.forEach((ml, i) => {
+        const dayBox = document.createElement("div");
+        dayBox.style.flex = "1";
+        dayBox.style.margin = "2px";
+        dayBox.style.padding = "5px";
+        dayBox.style.textAlign = "center";
+        dayBox.style.borderRadius = "5px";
+        dayBox.style.color = "#fff";
+
+        // Diferenciar cores: dia atual, passado e futuro
+        if(i === dayOfWeek){
+            dayBox.style.backgroundColor = "#007BFF"; // azul dia atual
+        } else if(i < dayOfWeek){
+            dayBox.style.backgroundColor = "#28a745"; // verde dias passados
+        } else {
+            dayBox.style.backgroundColor = "#6c757d"; // cinza dias futuros
+        }
+
+        dayBox.innerHTML = `<strong>${weekDays[i]}</strong><br>${ml}ml`;
+        weekContainer.appendChild(dayBox);
+    });
+}
+displayWeek();
+
+// Função para adicionar água
 function addWater() {
     const input = document.getElementById("inputMl");
     const value = parseInt(input.value);
-    if (!isNaN(value) && value > 0) {
+
+    if(!isNaN(value) && value > 0){
         totalMl += value;
         document.getElementById("waterAmount").textContent = `${totalMl}ml`;
         localStorage.setItem("totalMl", totalMl);
-        localStorage.setItem("savedDate", today);
+        localStorage.setItem("savedDate", todayStr);
         input.value = "";
+        alert(`${value} ml foram adicionados!`);
+        displayWeek(); // Atualiza a semana visual
     }
-    alert(`${value} ml foram adicionados!`)
 }
 
-document.getElementById("inputMl").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-         addWater();
-        }
-    });
+document.getElementById("inputMl").addEventListener("keydown", function(event){
+    if(event.key === "Enter"){
+        addWater();
+    }
+});
 
-//Verifica se o dia acabou
-function updateCountdown() {
+// Timer até a meia-noite
+function updateCountdown(){
     const now = new Date();
     const midnight = new Date();
-    midnight.setHours(24, 0, 0, 0);
+    midnight.setHours(24,0,0,0);
 
     const diff = midnight - now;
-    const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
-    const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-    const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+    const hours = String(Math.floor(diff / (1000*60*60))).padStart(2,'0');
+    const minutes = String(Math.floor((diff % (1000*60*60))/(1000*60))).padStart(2,'0');
+    const seconds = String(Math.floor((diff % (1000*60))/1000)).padStart(2,'0');
 
     document.getElementById("countdown").textContent = `${hours}h:${minutes}min:${seconds}s`;
 }
-
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Checar se o tema foi salvo anteriormente
+// Tema (escuro/claro)
 const themeToggle = document.getElementById("themeToggle");
-
-if (localStorage.getItem("theme") === "dark") {
+if(localStorage.getItem("theme") === "dark"){
     document.body.classList.add("dark");
     themeToggle.textContent = "☀️";
 }
-
 themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark");
     const isDark = document.body.classList.contains("dark");
-
-    // Atualiza o texto/ícone do botão
     themeToggle.textContent = isDark ? "☀️" : "🌙";
-
-    // Salva preferência
     localStorage.setItem("theme", isDark ? "dark" : "light");
 });
