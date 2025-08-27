@@ -36,7 +36,6 @@ if(savedDate !== todayStr){
 
 // Exibe consumo diário
 document.getElementById("waterAmount").textContent = `${totalMl}ml`;
-document.getElementById("yesterdayAmount").textContent = `${localStorage.getItem("yesterdayMl") || "0"}ml`;
 
 // Função para criar a visualização da semana em caixinhas
 function displayWeek() {
@@ -46,7 +45,7 @@ function displayWeek() {
         weekContainer.id = "weekAmount";
         weekContainer.style.display = "flex";
         weekContainer.style.justifyContent = "space-between";
-        weekContainer.style.marginTop = "10px";
+        weekContainer.style.marginTop = "30px";
         document.querySelector(".container").appendChild(weekContainer);
     }
     weekContainer.innerHTML = "";
