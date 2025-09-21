@@ -15,11 +15,23 @@
   <div class="container">
     <h2>Quanta água você já bebeu hoje?</h2>
     <div class="consumed" id="waterAmount">0ml</div>
+    <p id="goalDisplay">Meta: 0ml</p>
+
+    <!-- Botão para abrir o balão -->
+    <button id="openGoalModal">Definir Meta</button>
 
     <div class="input-area">
       <input type="number" id="inputMl" placeholder="Digite a quantidade" min="0" >
       <button onclick="addWater()">+</button>
     </div>
+
+    <!-- Barra de progresso -->
+    <div id="progressContainer">
+      <div id="progressBar">0%</div>
+    </div>
+
+    <!-- Semana -->
+    <div id="weekAmount"></div>
 
     <div class="countdown">
       faltam <strong id="countdown">--:--:--</strong> para acabar o dia.
@@ -28,6 +40,15 @@
     <!-- Botão para alternar entre tema claro e escuro -->
     <button id="themeToggle" aria-label="Alternar tema">🌙</button>
 </div>
+
+<!-- Balão (modal) da meta -->
+  <div id="goalModal" class="modal">
+    <div class="modal-content">
+      <span style="color:black" class="close">&times;</span>
+      <input type="number" id="goalInput" placeholder="Digite a meta">
+      <button onclick="setGoal()">Salvar</button>
+    </div>
+  </div>
 
   <div class="logo">
     <img src="H20 Tracker.png" alt="H2OTracker Logo">
