@@ -161,6 +161,7 @@ function addWater() {
         input.value = "";
         alert(`${value} ml foram adicionados!`);
         displayWeek(); // Atualiza a semana visual
+        updateProgress()
     }
 }
 
@@ -169,6 +170,7 @@ document.getElementById("inputMl").addEventListener("keydown", function(event){
     if(event.key === "Enter"){
         addWater();
     }
+    updateProgress()
 });
 
 // Timer até a meia-noite
