@@ -8,12 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="img/logo.png">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
   <title>H2O Tracker</title>
 </head>
 <body>  
 
   <div class="container">
-    <h2>Quanta água você já bebeu hoje?</h2>
+    <h1>Quantidade consumida</h1>
     <div class="consumed" id="waterAmount">0ml</div>
     <p id="goalDisplay">Meta: 0ml</p>
 
@@ -21,7 +22,7 @@
     <button id="openGoalModal">Definir Meta</button>
 
     <div class="input-area">
-      <input type="number" id="inputMl" placeholder="Digite a quantidade" min="0" >
+      <input type="number" id="inputMl" placeholder="Valor em mL" min="0" >
       <button onclick="addWater()">+</button>
     </div>
 
@@ -34,18 +35,18 @@
     <div id="weekAmount"></div>
 
     <div class="countdown">
-      faltam <strong id="countdown">--:--:--</strong> para acabar o dia.
+      <strong id="countdown">--:--:--</strong> para resetar o valor
     </div>
 
-    <!-- Botão para alternar entre tema claro e escuro -->
+    <!-- Alternador de temas -->
     <button id="themeToggle" aria-label="Alternar tema">🌙</button>
 </div>
 
-<!-- Balão (modal) da meta -->
+<!-- Definir a meta Pop Up -->
   <div id="goalModal" class="modal">
     <div class="modal-content">
       <span style="color:black" class="close">&times;</span>
-      <input type="number" id="goalInput" placeholder="Digite a meta">
+      <input type="number" id="goalInput" placeholder="Meta em mL">
       <button onclick="setGoal()">Salvar</button>
     </div>
   </div>
@@ -54,6 +55,5 @@
     <img src="img/tracker.png" alt="H2OTracker Logo">
   </div>
 
-  <script src="script.js"></script>
 </body>
 </html>
