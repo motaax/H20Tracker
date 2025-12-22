@@ -71,7 +71,7 @@ function setGoal(){
     }
 }
 
-// Progresso
+// Progresso da Barra
 function updateProgress(){
     const progressBar = document.getElementById("progressBar")
 

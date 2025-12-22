@@ -111,12 +111,12 @@ button {
 /* Barra de progresso */
 #progressContainer {
   width: 100%;
-  background: #ffffff;
   border-radius: 10px;
   border: 1px solid #007BFF;
   height: 25px;
   margin: 15px 0;
   overflow: hidden;
+  color:#000;
 }
 
 #progressBar {
@@ -194,19 +194,6 @@ button {
   color: #fff;
 }
 
-.logo {
-  position: absolute;
-  bottom: 20px;
-  justify-content: center;
-  align-items: center;
-}
-  
-.logo img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-
 /* Responsividade Mobile */
 @media (max-width: 460px) {
 
@@ -234,13 +221,6 @@ button {
     justify-content: center;
   }
 
-  .logo img {
-    max-width: 100px;
-    width: 100px;
-    max-height: 100px;
-    height: 100px;
-  }
-
   .modal .modal-content {
     margin-top: 80%;
     width: 200px;
@@ -249,13 +229,6 @@ button {
 
 /* Responsividade Tablet */
 @media (max-width: 768px) {
-
-  .logo img {
-    max-width: 100px;
-    width: 100px;
-    max-height: 100px;
-    height: 100px;
-  }
 
   .input-area button {
     justify-content: center;
