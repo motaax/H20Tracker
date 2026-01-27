@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", Helvetica;
 }
 
 :root {
@@ -93,11 +94,6 @@ button {
   border-radius: 10px 10px 10px 10px;
   font-size: 18px;
   cursor: pointer;
-}
-  
-.countdown {
-  margin-top: 50px;
-  font-size: 18px;
 }
 
 #openGoalModal {
@@ -195,7 +191,7 @@ button {
 }
 
 /* Responsividade Mobile */
-@media (max-width: 460px) {
+@media (max-width: 420px) {
 
   h1 {
     font-size: 26px;
@@ -224,6 +220,11 @@ button {
   .modal .modal-content {
     margin-top: 80%;
     width: 200px;
+  }
+
+  #weekAmount {
+    width: 100%;
+    font-size: 17px;
   }
 }
 
