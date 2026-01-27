@@ -2,51 +2,40 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="author" content="Felipe Mota">
-  <meta name="keywords" content="Gestor de água, gestão de água, consumo de água, hidratação">
-  <meta name="description" content="Gestor de água consumida diariamente">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="img/logo.png">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
   <title>H2O Tracker</title>
 </head>
-<body>  
+<body>
 
   <div class="container">
     <h1>Quantidade consumida</h1>
+
     <div class="consumed" id="waterAmount">0ml</div>
     <p id="goalDisplay">Meta: 0ml</p>
-
-    <!-- Botão para abrir o balão -->
     <button id="openGoalModal">Definir Meta</button>
 
     <div class="input-area">
-      <input type="number" id="inputMl" placeholder="Valor em mL" min="0" >
-      <button onclick="addWater()">+</button>
+      <input type="number" id="inputMl" placeholder="Adicionar(mL)" min="1">
+      <button type="button" onclick="addWater()">+</button>
     </div>
 
-    <!-- Barra de progresso -->
     <div id="progressContainer">
       <div id="progressBar">0%</div>
     </div>
 
-    <!-- Semana -->
-    <div id="weekAmount"></div>
+    <div id="weekAmount" class="week"></div>
 
-    <div class="countdown">
-      <strong id="countdown">--:--:--</strong> para resetar o valor
-    </div>
+    <button id="themeToggle" class="theme-btn">🌙</button>
+  </div>
 
-    <!-- Alternador de temas -->
-    <button id="themeToggle" aria-label="Alternar tema">🌙</button>
-</div>
-
-<!-- Definir a meta Pop Up -->
+  <!-- MODAL META DE ÁGUA -->
   <div id="goalModal" class="modal">
     <div class="modal-content">
-      <span style="color:black" class="close">&times;</span>
-      <input type="number" id="goalInput" placeholder="Meta em mL">
+      <span class="close">&times;</span>
+      <input type="number" id="goalInput" placeholder="Meta(mL)" min="1">
       <button onclick="setGoal()">Salvar</button>
     </div>
   </div>
