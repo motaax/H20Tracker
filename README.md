@@ -1,4 +1,4 @@
 # H20Tracker
- Fast and minimalist water manager
+ Gestor de água rápido e minimalista.
 
 [Acesse aqui](https://motaax.github.io/H20Tracker/)
