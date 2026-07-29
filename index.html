@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="img/logo.png">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
   <title>H2O Tracker</title>
@@ -15,11 +14,11 @@
 
     <div class="consumed" id="waterAmount">0ml</div>
     <p id="goalDisplay">Meta: 0ml</p>
-    <button id="openGoalModal">Definir Meta</button>
+    <button type="button" id="openGoalModal">Definir Meta</button>
 
     <div class="input-area">
-      <input type="number" id="inputMl" placeholder="Adicionar" min="1">
-      <button type="button" onclick="addWater()">+</button>
+      <input type="number" id="inputMl" placeholder="Adicionar" min="1" aria-label="Quantidade de água em ml">
+      <button type="button" id="btnAddWater">+</button>
     </div>
 
     <div id="progressContainer">
@@ -28,15 +27,15 @@
 
     <div id="weekAmount" class="week"></div>
 
-    <button id="themeToggle" class="theme-btn">🌙</button>
+    <button type="button" id="themeToggle" class="theme-btn" aria-label="Alternar tema">🌙</button>
   </div>
 
-  <!-- MODAL META DE ÁGUA -->
+  <!-- META DE ÁGUA -->
   <div id="goalModal" class="modal">
     <div class="modal-content">
-      <span class="close">&times;</span>
-      <input type="number" id="goalInput" placeholder="Meta" min="1">
-      <button onclick="setGoal()">Salvar</button>
+      <button type="button" class="close" id="closeGoalModal" aria-label="Fechar">&times;</button>
+      <input type="number" id="goalInput" placeholder="Meta" min="1" aria-label="Nova meta em ml">
+      <button type="button" id="btnSaveGoal">Salvar</button>
     </div>
   </div>
 
